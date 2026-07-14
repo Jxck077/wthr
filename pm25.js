@@ -81,31 +81,6 @@ const provinces = [
 
 const grid = document.getElementById("pm-grid");
 
-provinces.forEach(async province => {
-
-    const url =
-`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${province.lat}&longitude=${province.lon}&current=pm2_5`;
-
-    const res = await fetch(url);
-    const data = await res.json();
-
-    const pm = data.current.pm2_5;
-
-    grid.innerHTML += `
-
-        <div class="card"
-        onclick="location.href='pm25-detail.html?lat=${province.lat}&lon=${province.lon}&name=${province.name}'">
-
-            <h3>${province.name}</h3>
-
-            <div class="pm">${pm} μg/m³</div>
-
-        </div>
-
-    `;
-
-});
-
 async function loadPM25() {
 
     const grid = document.getElementById("pm-grid");
