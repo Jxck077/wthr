@@ -78,9 +78,6 @@ const provinces = [
   { name: "Ubon Ratchathani", lat: 15.23, lon: 104.86 }
 ];
 
-
-const grid = document.getElementById("pm-grid");
-
 async function loadPM25() {
 
     const grid = document.getElementById("pm-grid");
