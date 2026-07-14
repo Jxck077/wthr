@@ -18,6 +18,7 @@ const weatherData = [
 // โหลดข้อมูลเมื่อเปิดเว็บ
 window.onload = () => {
     loadWeather();
+    loadPM25();
 };
 
 
