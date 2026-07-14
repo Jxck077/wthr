@@ -1,25 +1,26 @@
-const params = new URLSearchParams(location.search);
+const pm = data.current.pm2_5;
 
-const lat = params.get("lat");
-const lon = params.get("lon");
-const name = params.get("name");
+document.getElementById("pm25").innerHTML = pm + " μg/m³";
 
-fetch(
-`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm2_5,pm10,carbon_monoxide,nitrogen_dioxide`
-)
+let status = "";
+let advice = "";
 
-.then(r=>r.json())
+if (pm <= 15) {
+    status = "Good";
+    advice = "Normal outdoor activities can be enjoyed.";
+} else if (pm <= 25) {
+    status = "Moderate";
+    advice = "Sensitive groups should monitor symptoms.";
+} else if (pm <= 37.5) {
+    status = "Unhealthy for Sensitive Groups";
+    advice = "Reduce prolonged or heavy outdoor exertion.";
+} else if (pm <= 75) {
+    status = "Unhealthy";
+    advice = "Wear an N95 mask when going outdoors.";
+} else {
+    status = "Hazardous";
+    advice = "Avoid going outdoors and stay in a closed room.";
+}
 
-.then(data=>{
-
-document.getElementById("province").innerHTML=name;
-
-document.getElementById("pm25").innerHTML=data.current.pm2_5+" μg/m³";
-
-document.getElementById("pm10").innerHTML=data.current.pm10+" μg/m³";
-
-document.getElementById("co").innerHTML=data.current.carbon_monoxide;
-
-document.getElementById("no2").innerHTML=data.current.nitrogen_dioxide;
-
-});
+document.getElementById("status").innerHTML = status;
+document.getElementById("advice").innerHTML = advice;
