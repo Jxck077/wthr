@@ -158,3 +158,63 @@ function openPM25(){
 
 }
 
+async function loadPM25() {
+
+    const pmCities = [
+        {
+            lat: 17.4108,
+            lon: 104.7784
+        },
+        {
+            lat: 13.7563,
+            lon: 100.5018
+        }
+    ];
+
+    for (let i = 0; i < pmCities.length; i++) {
+
+        try {
+
+            const url =
+            `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${pmCities[i].lat}&longitude=${pmCities[i].lon}&current=pm2_5`;
+
+            const res = await fetch(url);
+            const data = await res.json();
+
+            const pm = data.current.pm2_5;
+
+            document.getElementById("pm" + (i + 1)).innerHTML =
+                pm + " μg/m³";
+
+            document.getElementById("pmStatus" + (i + 1)).innerHTML =
+                pmLevel(pm);
+
+        } catch (e) {
+
+            console.log(e);
+
+        }
+
+    }
+
+}
+
+function pmLevel(pm) {
+
+    if (pm <= 15)
+        return "Good";
+
+    if (pm <= 25)
+        return "Moderate";
+
+    if (pm <= 37.5)
+        return "Unhealthy for Sensitive Groups"; // หรือใช้คำกระชับว่า "Unhealthy (Light)"
+
+    if (pm <= 75)
+        return "Unhealthy";
+
+    return "Hazardous"; // อันตรายมาก
+
+}
+
+
