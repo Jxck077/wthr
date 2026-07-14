@@ -105,3 +105,44 @@ provinces.forEach(async province => {
     `;
 
 });
+
+async function loadPM25() {
+
+    const grid = document.getElementById("pm-grid");
+
+    for (const province of provinces) {
+
+        try {
+
+            const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${province.lat}&longitude=${province.lon}&current=pm2_5`;
+
+            const res = await fetch(url);
+
+            const data = await res.json();
+
+            console.log(province.name, data);
+
+            const pm = data.current?.pm2_5 ?? "N/A";
+
+            grid.innerHTML += `
+                <div class="card"
+                    onclick="location.href='pm25-detail.html?lat=${province.lat}&lon=${province.lon}&name=${province.name}'">
+
+                    <h3>${province.name}</h3>
+
+                    <div class="pm">${pm} μg/m³</div>
+
+                </div>
+            `;
+
+        } catch (err) {
+
+            console.error("จังหวัดที่ผิดพลาด:", province.name, err);
+
+        }
+
+    }
+
+}
+
+loadPM25();
