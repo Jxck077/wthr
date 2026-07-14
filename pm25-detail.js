@@ -11,8 +11,6 @@ fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&lon
 .then(data => {
 
     console.log(data);
-    alert(JSON.stringify(data));
-
     document.getElementById("pm25").textContent = data.current.pm2_5;
     document.getElementById("pm10").textContent = data.current.pm10;
     document.getElementById("co").textContent = data.current.carbon_monoxide;
