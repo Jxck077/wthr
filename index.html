@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Weather Dashboard</h1>
+
+    <!-- Weather -->
+
+    <div class="section">
+
+        <div class="section-header">
+
+            <h2>🌤 Weather</h2>
+
+            <button onclick="openWeather()">
+                ดูทั้งหมด →
+            </button>
+
+        </div>
+
+        <div class="card-container">
+
+            <div class="card">
+
+                <h3>นครพนม</h3>
+
+                <img id="weatherIcon1" src="" alt="">
+
+                <p id="temp1">-- °C</p>
+
+                <p id="status1">Loading...</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>กรุงเทพฯ</h3>
+
+                <img id="weatherIcon2" src="" alt="">
+
+                <p id="temp2">-- °C</p>
+
+                <p id="status2">Loading...</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <!-- PM2.5 -->
+
+    <div class="section">
+
+        <div class="section-header">
+
+            <h2>🌫 PM2.5</h2>
+
+            <button onclick="openPM25()">
+                ดูทั้งหมด →
+            </button>
+
+        </div>
+
+        <div class="card-container">
+
+            <div class="card">
+
+                <h3>นครพนม</h3>
+
+                <p class="pm" id="pm1">--</p>
+
+                <p id="pmStatus1">Loading...</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>กรุงเทพฯ</h3>
+
+                <p class="pm" id="pm2">--</p>
+
+                <p id="pmStatus2">Loading...</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="index.js"></script>
+    
+</body>
+</html>
