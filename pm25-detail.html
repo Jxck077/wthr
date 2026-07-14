@@ -1,23 +1,38 @@
-<h1 id="province"></h1>
+<body>
 
-<div class="detail">
+<div class="detail-container">
 
-    <h2>PM2.5</h2>
+    <h2 id="province"></h2>
 
-    <p id="pm25"></p>
+    <div class="detail-pm" id="pm25"></div>
 
-    <h2>PM10</h2>
+    <div class="detail-status" id="status"></div>
 
-    <p id="pm10"></p>
+    <table class="detail-table">
 
-    <h2>CO</h2>
+        <tr>
+            <td>PM10</td>
+            <td id="pm10"></td>
+        </tr>
 
-    <p id="co"></p>
+        <tr>
+            <td>CO</td>
+            <td id="co"></td>
+        </tr>
 
-    <h2>NO₂</h2>
+        <tr>
+            <td>NO₂</td>
+            <td id="no2"></td>
+        </tr>
 
-    <p id="no2"></p>
+    </table>
+
+    <div class="advice-box" id="advice"></div>
+
+    <a href="pm25.html" class="back-button">← กลับ</a>
 
 </div>
 
 <script src="js/pm25-detail.js"></script>
+
+</body>
